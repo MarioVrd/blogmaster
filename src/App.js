@@ -1,11 +1,13 @@
+import GlobalStyle from './components/GlobalStyles';
+import HomeScreen from './screens/HomeScreen';
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Hello</h1>
-    
-    </div>
-  );
+	return (
+		<div className='App'>
+			<GlobalStyle />
+			<HomeScreen />
+		</div>
+	);
 }
 
 export default App;
