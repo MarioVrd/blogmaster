@@ -7,9 +7,17 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }
 
+:root {
+  --primary-color: #32c338;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   color: #333;
+}
+
+a {
+  color: var(--primary-color);
 }
 
 `;
