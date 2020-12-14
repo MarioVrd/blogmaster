@@ -1,14 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const BlogItem = ({ blog }) => {
 	return (
 		<Article>
 			<header>
-				<img height='350' src={blog.thumbnailImg} loading='lazy' alt='' />
+				<Link to={`/blog/${blog.id}`}>
+					<img height='350' src={blog.thumbnailImg} loading='lazy' alt='' />
+				</Link>
 				<div className='category'>{blog.category}</div>
 			</header>
-			<h1 className='blog__title'>{blog.title}</h1>
+			<Link to={`/blog/${blog.id}`}>
+				<h1 className='blog__title'>{blog.title}</h1>
+			</Link>
 			<p className='blog__content'>{blog.body}</p>
 			<footer>
 				<div className='user'>
@@ -41,26 +46,55 @@ const Article = styled.article`
 			border-top-right-radius: 4px;
 			border-bottom-right-radius: 4px;
 		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			box-shadow: inset 0 0 2.5rem rgba(0, 0, 0, 0.5);
+			border-radius: 8px;
+			transition: opacity 250ms ease-out;
+			pointer-events: none;
+		}
+
+		&:hover::after {
+			opacity: 0.2;
+		}
 	}
 
 	img {
 		width: 100%;
+		display: block;
 		position: relative;
 		object-fit: cover;
 		height: auto;
-		border-radius: 10px;
+		border-radius: 8px;
 	}
 
 	p {
 		opacity: 0.8;
 	}
 
+	a {
+		text-decoration: none;
+	}
+
 	.blog__title {
 		line-height: 1.2;
-		margin: 0.5em 0 0.75em;
+		margin: 0.85em 0 0.65em;
 		text-transform: capitalize;
 		font-weight: 500;
 		font-size: 1.25rem;
+		text-decoration: none;
+		color: #333;
+		transition: color 250ms ease-in-out;
+
+		&:hover {
+			color: var(--primamry-color);
+		}
 	}
 
 	.blog__content::first-letter {

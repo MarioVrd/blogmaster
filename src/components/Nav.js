@@ -10,6 +10,13 @@ const Nav = () => {
 				blogMASTER
 			</Link>
 
+			<ul className='nav__list'>
+				<li className='nav__item'>Home</li>
+				<li className='nav__item'>Nature</li>
+				<li className='nav__item'>Technology</li>
+				<li className='nav__item'>School</li>
+			</ul>
+
 			<div className='subscribe'>
 				<input type='email' className='subscribe__email' placeholder='Email' />
 				<Button>Subscribe</Button>
@@ -34,6 +41,16 @@ const StyledNav = styled.nav`
 		font-size: 1.25rem;
 		text-decoration: none;
 		display: inline-block;
+	}
+
+	.nav__list {
+		display: flex;
+		list-style: none;
+		margin-left: auto;
+	}
+
+	.nav__item {
+		margin: 0 1rem;
 	}
 
 	.subscribe {
