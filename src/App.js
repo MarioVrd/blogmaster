@@ -14,7 +14,11 @@ function App() {
 					<HomeScreen />
 				</Route>
 
-				<Route path='/blog/:id'>
+				<Route exact path='/blog/:slug'>
+					<BlogScreen />
+				</Route>
+
+				<Route exact path='/blog/id/:id'>
 					<BlogScreen />
 				</Route>
 			</Switch>

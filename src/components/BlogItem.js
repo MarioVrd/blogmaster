@@ -35,6 +35,8 @@ const Article = styled.article`
 
 	header {
 		position: relative;
+		border-radius: 8px;
+		overflow: hidden;
 
 		.category {
 			position: absolute;
@@ -56,7 +58,7 @@ const Article = styled.article`
 			height: 100%;
 			box-shadow: inset 0 0 2.5rem rgba(0, 0, 0, 0.5);
 			border-radius: 8px;
-			transition: opacity 250ms ease-out;
+			transition: opacity 250ms ease-in;
 			pointer-events: none;
 		}
 
@@ -71,7 +73,11 @@ const Article = styled.article`
 		position: relative;
 		object-fit: cover;
 		height: auto;
-		border-radius: 8px;
+		transition: transform 250ms ease-out;
+	}
+
+	header:hover img {
+		transform: scale(1.05);
 	}
 
 	p {

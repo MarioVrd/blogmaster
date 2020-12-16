@@ -5,6 +5,7 @@ import BlogItem from '../components/BlogItem';
 import axios from 'axios';
 import { Container } from '../styles';
 import styled from 'styled-components';
+import Alert from '../components/Alert';
 
 const HomeScreen = () => {
 	const [blogs, setBlogs] = useState(null);
@@ -24,9 +25,11 @@ const HomeScreen = () => {
 	}, []);
 
 	return (
-		<div>
+		<>
 			{error ? (
-				<div className='alert alert--danger'>{error}</div>
+				<Container>
+					<Alert>{error}</Alert>
+				</Container>
 			) : !blogs ? (
 				<Loader />
 			) : (
@@ -42,7 +45,7 @@ const HomeScreen = () => {
 					</Container>
 				</>
 			)}
-		</div>
+		</>
 	);
 };
 
