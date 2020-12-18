@@ -38,7 +38,7 @@ const HomeScreen = () => {
 
 					<Container>
 						<BlogGrid>
-							{blogs.map((blog, index) => (
+							{blogs.map(blog => (
 								<BlogItem key={blog.id} blog={blog} />
 							))}
 						</BlogGrid>

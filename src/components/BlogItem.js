@@ -63,7 +63,7 @@ const Article = styled.article`
 		}
 
 		&:hover::after {
-			opacity: 0.2;
+			opacity: 0.7;
 		}
 	}
 
