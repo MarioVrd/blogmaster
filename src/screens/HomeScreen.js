@@ -51,8 +51,9 @@ const HomeScreen = () => {
 
 const BlogGrid = styled.div`
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-	gap: 2rem;
+	grid-template-columns: repeat(auto-fit, minmax(35ch, 1fr));
+	column-gap: 3rem;
+	row-gap: 2rem;
 `;
 
 export default HomeScreen;

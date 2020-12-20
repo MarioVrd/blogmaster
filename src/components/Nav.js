@@ -46,11 +46,12 @@ const StyledNav = styled.nav`
 	.nav__list {
 		display: flex;
 		list-style: none;
-		margin-left: auto;
+		margin-left: 2rem;
 	}
 
 	.nav__item {
 		margin: 0 1rem;
+		cursor: pointer;
 	}
 
 	.subscribe {

@@ -1,16 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button } from '../styles';
+import { getFirstParagraph } from '../utils/blogContent';
+import ReactHtmlParser from 'react-html-parser';
+import { Link } from 'react-router-dom';
 
 const FeaturedBlog = ({ blog }) => {
 	return (
 		<HeroBlog>
 			<article className='hero__article'>
 				<h1>{blog.title}</h1>
-				<p>{blog.body}</p>
-				<Button>Read More</Button>
+				<p>{ReactHtmlParser(getFirstParagraph(blog.body).substr(3))}</p>
+				<Link to={`/blog/${blog.id}`}>
+					<Button>Read More</Button>
+				</Link>
 			</article>
-			<img src='https://picsum.photos/id/450/1920/1080' alt={blog.title} />
+			<img src={blog.thumbnailImg} alt={blog.title} />
 		</HeroBlog>
 	);
 };

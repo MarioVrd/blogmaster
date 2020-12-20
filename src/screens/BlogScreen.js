@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactHtmlParser from 'react-html-parser'
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { Container } from '../styles';
@@ -41,22 +42,7 @@ const BlogScreen = () => {
 					</div>
 					<h1>{blog.title}</h1>
 					<img src={blog.thumbnailImg} alt={blog.title} />
-					{/* <p>{blog.body}</p> */}
-					<p>
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis illum ex ab
-						laudantium eum odio possimus minima beatae ipsum impedit molestias qui, ratione
-						voluptate id consequatur cumque, fugiat quis! Ad.
-					</p>
-					<p>
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis voluptatem
-						quibusdam sed ducimus incidunt. Eveniet, quasi error blanditiis, rem vel libero eaque
-						consequatur, corrupti molestiae eligendi modi sed culpa nemo iure veniam. Quae, deleniti
-						corrupti!
-					</p>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, eveniet veritatis.
-						Eius, culpa omnis.
-					</p>
+					<div>{ReactHtmlParser(blog.body)}</div>
 
 					<footer>
 						<BlogAuthor author={blog.user} />

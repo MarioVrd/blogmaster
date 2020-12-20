@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import ReactHtmlParser from 'react-html-parser';
+import { getFirstParagraph } from '../utils/blogContent';
 
 const BlogItem = ({ blog }) => {
 	return (
@@ -14,7 +16,7 @@ const BlogItem = ({ blog }) => {
 			<Link to={`/blog/${blog.id}`}>
 				<h1 className='blog__title'>{blog.title}</h1>
 			</Link>
-			<p className='blog__content'>{blog.body}</p>
+			<p className='blog__content'>{ReactHtmlParser(getFirstParagraph(blog.body).substr(3))}</p>
 			<footer>
 				<div className='user'>
 					<img className='user__avatar' src={blog.user.avatar} alt={blog.user.name} />
@@ -86,6 +88,17 @@ const Article = styled.article`
 
 	a {
 		text-decoration: none;
+		color: #333;
+		font-weight: 500;
+
+		&:hover,
+		&:focus {
+			color: var(--primary-color);
+		}
+	}
+
+	b {
+		font-weight: 400;
 	}
 
 	.blog__title {
