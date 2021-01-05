@@ -3,6 +3,7 @@ import GlobalStyle from './components/GlobalStyles';
 import Nav from './components/Nav';
 import HomeScreen from './screens/HomeScreen';
 import BlogScreen from './screens/BlogScreen';
+import CategoryScreen from './screens/CategoryScreen';
 
 function App() {
 	return (
@@ -16,6 +17,10 @@ function App() {
 
 				<Route exact path='/blog/:slug'>
 					<BlogScreen />
+				</Route>
+
+				<Route exact path='/category/:name'>
+					<CategoryScreen />
 				</Route>
 
 				<Route exact path='/blog/id/:id'>

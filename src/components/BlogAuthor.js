@@ -12,10 +12,8 @@ const BlogAuthor = ({ author }) => {
 				</div>
 			</div>
 
-			<div className='socials'>
-				<span>T</span>
-				<span>T</span>
-				<span>T</span>
+			<div className='about'>
+				<p>{author.about}</p>
 			</div>
 		</Author>
 	);
@@ -28,10 +26,15 @@ const Author = styled.div`
 	margin-top: 3rem;
 	padding-top: 3rem;
 	border-top: 1px solid #ddd;
+	flex-wrap: wrap;
+	font-size: 0.9em;
+	color: #555;
 
 	.user {
 		display: flex;
 		align-items: center;
+		flex-basis: 28%;
+		min-width: 300px;
 
 		&__avatar {
 			width: 60px;
@@ -44,6 +47,11 @@ const Author = styled.div`
 		&__name {
 			font-weight: 500;
 		}
+	}
+
+	.about {
+		flex-basis: 70%;
+		flex-grow: 1;
 	}
 `;
 

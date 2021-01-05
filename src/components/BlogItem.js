@@ -16,7 +16,7 @@ const BlogItem = ({ blog }) => {
 			<Link to={`/blog/${blog.id}`}>
 				<h1 className='blog__title'>{blog.title}</h1>
 			</Link>
-			<p className='blog__content'>{ReactHtmlParser(getFirstParagraph(blog.body).substr(3))}</p>
+			<p className='blog__content'>{ReactHtmlParser(getFirstParagraph(blog.body))}</p>
 			<footer>
 				<div className='user'>
 					<img className='user__avatar' src={blog.user.avatar} alt={blog.user.name} />
@@ -142,6 +142,12 @@ const Article = styled.article`
 			&__name {
 				font-weight: 500;
 			}
+		}
+	}
+
+	.date {
+		@media (max-width: 500px) {
+			display: none;
 		}
 	}
 `;

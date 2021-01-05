@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Loader from '../components/Loader';
 import FeaturedBlog from '../components/FeaturedBlog';
 import BlogItem from '../components/BlogItem';
 import axios from 'axios';
 import { Container } from '../styles';
 import styled from 'styled-components';
 import Alert from '../components/Alert';
+import FeaturedBlogSkeleton from '../components/FeaturedBlogSkeleton';
 
 const HomeScreen = () => {
 	const [blogs, setBlogs] = useState(null);
@@ -31,7 +31,7 @@ const HomeScreen = () => {
 					<Alert>{error}</Alert>
 				</Container>
 			) : !blogs ? (
-				<Loader />
+				<FeaturedBlogSkeleton />
 			) : (
 				<>
 					<FeaturedBlog key='featured' blog={blogs[0]} />
@@ -54,6 +54,10 @@ const BlogGrid = styled.div`
 	grid-template-columns: repeat(auto-fit, minmax(35ch, 1fr));
 	column-gap: 3rem;
 	row-gap: 2rem;
+
+	@media (max-width: 500px) {
+		grid-template-columns: 1fr;
+	}
 `;
 
 export default HomeScreen;

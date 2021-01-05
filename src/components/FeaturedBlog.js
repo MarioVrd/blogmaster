@@ -10,7 +10,7 @@ const FeaturedBlog = ({ blog }) => {
 		<HeroBlog>
 			<article className='hero__article'>
 				<h1>{blog.title}</h1>
-				<p>{ReactHtmlParser(getFirstParagraph(blog.body).substr(3))}</p>
+				<p>{ReactHtmlParser(getFirstParagraph(blog.body))}</p>
 				<Link to={`/blog/${blog.id}`}>
 					<Button>Read More</Button>
 				</Link>
@@ -39,6 +39,11 @@ const HeroBlog = styled.header`
 		z-index: 1;
 		max-width: 50%;
 		min-width: 30ch;
+		padding: 2rem 0;
+
+		@media (max-width: 840px) {
+			min-width: 100%;
+		}
 	}
 
 	h1 {
@@ -57,6 +62,14 @@ const HeroBlog = styled.header`
 		width: 100%;
 		height: 100%;
 		z-index: -1;
+	}
+
+	@media (min-width: 1920px) {
+		height: 60vh;
+	}
+
+	@media (min-width: 2860px) {
+		height: 40vh;
 	}
 `;
 

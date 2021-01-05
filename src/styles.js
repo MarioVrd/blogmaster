@@ -15,4 +15,9 @@ export const Button = styled.button`
 	border: none;
 	font-family: 'Poppins', sans-serif;
 	cursor: pointer;
+	transition: background-color 200ms ease-out;
+
+	&:hover {
+		background-color: var(--primary-color-hover);
+	}
 `;
