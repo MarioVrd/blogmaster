@@ -1,51 +1,37 @@
-import React, { useState, useEffect } from "react";
-import FeaturedBlog from "../components/FeaturedBlog";
-import BlogItem from "../components/BlogItem";
-import axios from "axios";
-import { Container, BlogGrid } from "../styles";
-import Alert from "../components/Alert";
-import FeaturedBlogSkeleton from "../components/FeaturedBlogSkeleton";
+import React from 'react';
+import FeaturedBlog from '../components/FeaturedBlog';
+import BlogItem from '../components/BlogItem';
+import { Container, BlogGrid } from '../styles';
+import Alert from '../components/Alert';
+import FeaturedBlogSkeleton from '../components/FeaturedBlogSkeleton';
+import useData from '../hooks/useData';
 
 const HomeScreen = () => {
-  const [blogs, setBlogs] = useState(null);
-  const [error, setError] = useState(null);
+	const [blogs, error] = useData();
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const { data } = await axios.get("/data/blogs.json");
-        setBlogs(data);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
+	return (
+		<>
+			{error ? (
+				<Container>
+					<Alert>{error}</Alert>
+				</Container>
+			) : blogs == null ? (
+				<FeaturedBlogSkeleton />
+			) : (
+				<>
+					<FeaturedBlog key='featured' blog={blogs[0]} />
 
-    fetchBlogs();
-  }, []);
-
-  return (
-    <>
-      {error ? (
-        <Container>
-          <Alert>{error}</Alert>
-        </Container>
-      ) : !blogs ? (
-        <FeaturedBlogSkeleton />
-      ) : (
-        <>
-          <FeaturedBlog key='featured' blog={blogs[0]} />
-
-          <Container>
-            <BlogGrid>
-              {blogs.map((blog) => (
-                <BlogItem key={blog.id} blog={blog} />
-              ))}
-            </BlogGrid>
-          </Container>
-        </>
-      )}
-    </>
-  );
+					<Container>
+						<BlogGrid>
+							{blogs.map(blog => (
+								<BlogItem key={blog.id} blog={blog} />
+							))}
+						</BlogGrid>
+					</Container>
+				</>
+			)}
+		</>
+	);
 };
 
 export default HomeScreen;
